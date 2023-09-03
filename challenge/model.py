@@ -6,6 +6,7 @@ import xgboost as xgb
 from sklearn.metrics import confusion_matrix, classification_report
 from sklearn.utils import shuffle
 from datetime import datetime
+import joblib
 
 class DelayModel:
 
@@ -158,6 +159,7 @@ class DelayModel:
         xgb_model_2.fit(x_train2, y_train2)
 
         #save the trained model in the class attribute
+        joblib.dump(xgb_model_2, 'modelo_train.pkl')
         self._model = xgb_model_2
 
     def predict(
