@@ -1,13 +1,14 @@
 # syntax=docker/dockerfile:1.2
-FROM python:latest
+FROM python:3.7
 # put you docker configuration here
 
 # Establece el directorio de trabajo en /app
 WORKDIR /app
 
 # Copia los archivos de la aplicación al contenedor
-COPY challenge/ ./challenge/
+COPY challenge ./challenge
 COPY requirements.txt .
+COPY modelo_train.pkl .
 
 # Instala las dependencias de producción
 RUN pip install -r requirements.txt

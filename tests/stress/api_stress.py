@@ -5,7 +5,7 @@ class StressUser(HttpUser):
     @task
     def predict_argentinas(self):
         self.client.post(
-            "/predict", 
+            "predict", 
             json={
                 "flights": [
                     {
@@ -21,7 +21,7 @@ class StressUser(HttpUser):
     @task
     def predict_latam(self):
         self.client.post(
-            "/predict", 
+            "predict", 
             json={
                 "flights": [
                     {
