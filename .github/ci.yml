@@ -1,7 +1,39 @@
 name: 'Continuous Integration'
 
 on:
-  ...
+  push:
+    branches:
+      - development
 
 jobs:
-  ...
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v2
+
+      - name: Configurar Python 3.7
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.7
+
+      - name: Instalar dependencias
+        run: |
+          pip install -r requirements.txt
+          pip install -r requirements-dev.txt
+          pip install -r requirements-test.txt
+
+      - name: Ejecutar pruebas del modelo (model.py)
+        run: |
+          # Ejecutar pruebas del modelo en el branch de desarrollo (development)
+          # Utilizar el comando: make model-test desde la ubicación del Makefile
+
+      - name: Ejecutar pruebas de la API (api.py)
+        run: |
+          # Ejecutar pruebas de la API utilizando el comando: make api-test desde la ubicación del Makefile
+
+      - name: Fusionar cambios en main
+        run: |
+          # Fusionar los cambios del branch de desarrollo (development) a main
+          # Esto debe hacerse después de que las pruebas en development sean exitosas       
